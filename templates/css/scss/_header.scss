@@ -1,0 +1,152 @@
+.header-default {
+    padding : 40px 0;
+    position: relative;
+    width   : 100%;
+
+    .navbar-nav {
+        margin-left: 50px;
+    }
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar-nav {
+    font-size: 14px;
+
+    .nav-link {
+        padding: .5rem 1rem;
+        color  : $colormenu;
+
+        &:hover {
+            color: $colordark;
+        }
+    }
+
+    li.active {
+        .nav-link {
+            color           : #fff;
+            border-radius   : 25px;
+            background-color: $colorpink;
+        }
+    }
+}
+
+.navbar-brand {
+    padding-top   : 0;
+    padding-bottom: 0;
+    padding-right : 0;
+
+    img {
+        height        : 40px;
+        vertical-align: middle;
+    }
+}
+
+.header-right {
+    .social-icons {
+        display: inline-block;
+    }
+
+    .header-buttons {
+        display    : inline-flex;
+        align-items: center;
+        margin-left: 50px;
+
+        button {
+            margin-left: 10px;
+
+            &:first-child {
+                margin-left: 0;
+            }
+        }
+    }
+}
+
+.canvas-menu {
+    background: #fff;
+    height    : 100vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding   : 40px;
+    position  : fixed;
+    right     : 0;
+    top       : 0;
+    width     : 300px;
+    z-index   : 10;
+    @include transform(translateX(350px));
+
+    @include shadow(-4px 0px 20px #ccc);
+
+    &.open {
+        @include transform(translateX(0));
+    }
+
+    &.position-left {
+        left : 0;
+        right: auto;
+        @include transform(translateX(-350px));
+
+        &.open {
+            @include transform(translateX(0));
+        }
+    }
+
+    .btn-close {
+        box-sizing: content-box;
+        width     : 1em;
+        height    : 1em;
+        position  : absolute;
+        padding   : .25em .25em;
+        color     : #000;
+        border    : 0;
+        opacity   : .4;
+        right     : 30px;
+        top       : 20px;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .logo {
+        margin-bottom: 80px;
+        margin-top   : 50px;
+        width        : 100%;
+
+        img {
+            height: 40px;
+        }
+    }
+
+    nav {
+        width: 100%;
+    }
+
+    .vertical-menu {
+        list-style   : none;
+        padding      : 0;
+        margin-bottom: 0;
+
+        li {
+            padding    : 0;
+            position   : relative;
+            list-style : none;
+            line-height: 2.5rem;
+
+            &.active {
+                a {
+                    color: $colorpink;
+                }
+            }
+
+            a {
+                color          : $colordark;
+                font-weight    : 400;
+                text-decoration: none;
+                position       : relative;
+            }
+        }
+    }
+}

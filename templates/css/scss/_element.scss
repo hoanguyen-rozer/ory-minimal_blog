@@ -1,0 +1,54 @@
+.form-control {
+    display         : block;
+    width           : 100%;
+    padding         : 8px 16px;
+    line-height     : 1.5;
+    border-radius   : 25px;
+    border          : 1px solid $colorpink;
+    font-size       : 14px;
+    background-color: #fff;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.form-group{
+    margin-bottom: 30px;
+}
+
+.tag {
+    color        : $colordefault;
+    border       : 1px solid $colorgray;
+    border-radius: 25px;
+    font-size    : 13px;
+    display      : inline-block;
+    padding      : 3px 10px;
+    margin       : 4px 0;
+
+    &:hover {
+        border-color: $colorpink;
+        color       : $colorpink;
+    }
+}
+
+.breadcrumb {
+    padding         : 0;
+    margin-bottom   : 20px;
+    list-style      : none;
+    background-color: transparent;
+
+    .breadcrumb-item {
+        a {
+            color: $colorgray;
+
+            &:hover {
+                color: $colorpink;
+            }
+        }
+
+        &.active {
+            color: $colorgray;
+        }
+    }
+}
