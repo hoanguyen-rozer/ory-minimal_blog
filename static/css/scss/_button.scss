@@ -1,0 +1,47 @@
+button {
+    @include transition(.3s);
+
+    &:focus {
+        outline   : none;
+        box-shadow: none;
+    }
+}
+
+.icon-button {
+    color          : #fff;
+    border         : 0;
+    border-radius  : 50%;
+    background     : $colorpink;
+    display        : inline-flex;
+    justify-content: center;
+    align-items    : center;
+    height         : 37px;
+    width          : 37px;
+    line-height    : 39px;
+    text-align     : center;
+    vertical-align : middle;
+}
+
+.btn {
+    color         : #fff;
+    border        : 0;
+    border-radius : 25px;
+    font-size     : 16px;
+    font-weight   : 400;
+    overflow      : hidden;
+    position      : relative;
+    display       : inline-block;
+    vertical-align: middle;
+    white-space   : nowrap;
+    text-align    : center;
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.btn-default {
+    color           : #fff;
+    padding         : 8px 36px;
+    background-color: $colorpink;
+}

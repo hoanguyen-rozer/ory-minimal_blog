@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block content %}
+    <div class="section-header">
+        <h3 class="section-title">Lastest Posts</h3>
+    </div>
+    <div class="row">
+        {% for post in latest_posts %}
+            <div class="col-md-12 col-sm-6">
+                <div class="post post-list clearfix">
+                    <div class="thumbnail rounded">
+                        <a href="{{ post.get_absolute_url }}">
+                            <div class="inner">
+                                <img src="{{ post.get_image }}"
+                                     alt="{{ post.title }}">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="details">
+                        <ul class="meta list-inline mb-3">
+                            <li class="list-inline-item">
+                                <a href="#">
+                                    <img src="{% static 'images/Akatsuki.png' %}"
+                                         class="author" alt="author">Admin</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#">{{ post.category.name|capfirst }}</a>
+                            </li>
+                            <li class="list-inline-item">{{ post.published_at|date:'d F Y' }}</li>
+                        </ul>
+                        <h5 class="post-title">
+                            <a href="{{ post.get_absolute_url }}">{{ post.title|title }}</a>
+                        </h5>
+                        <p class="excerpt mb-0">
+                            A wonderful serenity has taken possession of my entire soul, like these sweet mornings
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
