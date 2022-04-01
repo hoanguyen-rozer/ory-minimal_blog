@@ -21,7 +21,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
     def view_posts_link(self, obj):
         count = obj.posts.count()
-        url = reverse('admin:posts_post_changelist') + '?' + urlencode({'category__id': f"{obj.id}"})
+        url = reverse('admin:src_post_changelist') + '?' + urlencode({'category__id': f"{obj.id}"})
         return format_html('<a href="{}">{} Posts</a>', url, count)
 
     view_posts_link.short_description = 'Posts'

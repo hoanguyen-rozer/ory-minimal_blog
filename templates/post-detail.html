@@ -68,5 +68,79 @@
             </div>
         </div>
     </div>
+    <div class="section-header">
+        <h3 class="section-title">
+            Comments ({{ comments_on_post.count }})
+        </h3>
+    </div>
+    <div class="comments p-3">
+        <ul class="comments" id="comments">
+            {% for comment in comments_on_post %}
+                <li class="comment">
+                    <div class="thumbnail">
+                        <img src="{% static 'images/Akatsuki.png' %}"
+                             alt="guess avatar">
+                    </div>
+                    <div class="details">
+                        <h4 class="name">
+                            <a href="#">{{ comment.username }}</a>
+                        </h4>
+                        <span class="date">{{ comment.created_at|date:'j F Y' }}</span>
+                        <p>
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+            <div id="last-comment"></div>
+        </ul>
+    </div>
+    <div class="section-header">
+        <h3 class="section-title">
+            Leave Comment
+        </h3>
+    </div>
+    <div class="comment-form p-3">
+        <form id="comment-form" class="comment-form" method="post" action="">
+            {% csrf_token %}
+            <div class="messages">
+            </div>
+            <div class="row">
+                <div class="column col-md-12">
+                    <!-- Comment textarea -->
+                    <div class="form-group">
+                        {{ comment_form.content }}
+                    </div>
+                </div>
+                <div class="column col-md-6">
+                    <!-- Email input -->
+                    <div class="form-group">
+                        {{ comment_form.username }}
+                    </div>
+                </div>
+                <div class="column col-md-6">
+                    <!-- Name input -->
+                    <div class="form-group">
+                        {{ comment_form.user_email }}
+                    </div>
+                </div>
+            </div>
+            <button type="submit"
+                    name="submit"
+                    id="submit"
+                    value="Submit"
+                    class="btn btn-default">
+                Submit
+            </button>
+        </form>
+    </div>
 
+{% endblock %}
+
+{% block extra_js %}
+    <script !src="">
+        const post_id = {{ post_detail.id }};
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <script src="{% static 'js/ajax.js' %}"></script>
 {% endblock %}

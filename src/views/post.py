@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, DetailView
 
-from src.models import Post
+from src.forms import CommentForm
+from src.models import Post, Comment
 
 
 class HomepageView(TemplateView):
@@ -23,11 +24,13 @@ class PostDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PostDetailView, self).get_context_data(**kwargs)
-        # comment_form = CommentForm()
-        # post = Post.objects.get(slug=self.kwargs.get('slug'))
-        # comments = Comment.objects.filter(post=post).select_related('user')
-        # context.update({'comments': comments, 'comment_form': comment_form})
-        # context['comment_form'] = comment_form
+        comment_form = CommentForm()
+        post = Post.objects.get(slug=self.kwargs.get('slug'))
+        comments_on_post = Comment.objects.filter(post=post)
+        context.update({
+            'comments_on_post': comments_on_post,
+            'comment_form': comment_form
+        })
         return context
 
 
