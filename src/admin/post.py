@@ -19,6 +19,9 @@ class PostAdmin(admin.ModelAdmin):
 
     @admin.action(description="Make selected posts as published")
     def make_published(self, request, queryset):
+        """
+        Action allow change status publish for multiple posts
+        """
         updated = queryset.update(status=Post.PostStatus.PUBLISHED)
         self.message_user(request, ngettext(
             '%d post was successfully marked as published.',

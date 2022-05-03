@@ -13,6 +13,9 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
     def number_post(self, obj):
+        """
+        Render readable number of post
+        """
         # result = Post.objects.filter(category=obj).count()
         result = obj.posts.count()
         return format_html("<b>{}</b>", result)
@@ -20,6 +23,9 @@ class CategoryAdmin(admin.ModelAdmin):
     number_post.short_description = 'Number of post'
 
     def view_posts_link(self, obj):
+        """
+        Access posts through by category
+        """
         count = obj.posts.count()
         url = reverse('admin:src_post_changelist') + '?' + urlencode({'category__id': f"{obj.id}"})
         return format_html('<a href="{}">{} Posts</a>', url, count)

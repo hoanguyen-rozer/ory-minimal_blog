@@ -13,7 +13,7 @@ def random_string_generator(size=10, chars=string.ascii_lowercase + string.digit
 
 def unique_slug_generator(instance, new_slug=None):
     """
-
+    Get unique slug for objects in database
     :param instance: instance of model which need a unique slug.
     :param new_slug: new slug for instance
     :return: str: new unique slug
@@ -24,6 +24,7 @@ def unique_slug_generator(instance, new_slug=None):
         slug = slugify(instance.title)
 
     Klass = instance.__class__
+    # Check slug whether is duplicate
     check_slug_exists = Klass.objects.filter(slug=slug).exists()
     if check_slug_exists:
         new_slug = "{slug}-{rands}".format(slug=slug,
@@ -56,6 +57,9 @@ def user_avatar_filename(instance, filename):
 
 
 def model_to_dict(instance):
+    """
+    Convert instance model to dict
+    """
     opts = instance._meta
     data = {}
     for f in chain(opts.concrete_fields, opts.private_fields):
